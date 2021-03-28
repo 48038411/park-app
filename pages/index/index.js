@@ -1,9 +1,7 @@
 // index.js
 // 获取应用实例
 // 引入SDK核心类，js文件根据自己业务，位置可自行放置
-var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var amapFile = require('../../libs/amap-wx');
-var qqmapsdk;
 const app = getApp()
 
 Page({
@@ -76,10 +74,6 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    // 实例化API核心类
-    qqmapsdk = new QQMapWX({
-      key: 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'
-    });
     //获取用户当前的授权状态
     wx.getSetting({
       success(res) {
