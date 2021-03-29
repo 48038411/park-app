@@ -2,8 +2,11 @@
 // 获取应用实例
 // 引入SDK核心类，js文件根据自己业务，位置可自行放置
 var amapFile = require('../../libs/amap-wx');
+var QQMapWX = require('../../libs/qqmap-wx-jssdk');
 const app = getApp()
-
+var qqmapsdk = new QQMapWX({
+  key: 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX' //申请的开发者秘钥key
+});
 Page({
   data: {
     longitude: "",
@@ -13,20 +16,19 @@ Page({
     gaodeAddress: ""
   },
   //跳转到选点页面(引用的插件)
-test(){
-  const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
-  const referer = '我的地图'; //调用插件的app的名称
-  const location = JSON.stringify({
-    latitude: this.data.latitude,
-    longitude: this.data.longitude
-  });
-  const category = '生活服务,娱乐休闲';
-  
-  wx.navigateTo({
-    url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
-  });
-},
-  //高德地图获取定位
+  test() {
+    const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
+    const referer = '我的地图'; //调用插件的app的名称
+    const location = JSON.stringify({
+      latitude: this.data.latitude,
+      longitude: this.data.longitude
+    });
+    const category = '生活服务,娱乐休闲';
+
+    wx.navigateTo({
+      url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
+    });
+  },
   //通过两点经纬度计算距离（KM）  
   distance: function (la1, lo1, la2, lo2) {
     var La1 = la1 * Math.PI / 180.0;
@@ -38,37 +40,6 @@ test(){
     s = Math.round(s * 10000) / 10000;
     console.log("计算结果", s);
     return s;
-  },
-  // 通过高德地图接口获取当前经纬度，个人觉得微信接口不准
-  gaodeGetLocation: function () {
-    var that = this;
-    var myAmapFun = new amapFile.AMapWX({
-      key: '4ca3660bbd1986f8acc638ba8bf78e7e'
-    });
-    myAmapFun.getRegeo({
-      success: (res) => {
-        console.log(res)
-        //计算两个经纬度距离
-        that.setData({
-          longitude: res[0].longitude,
-          latitude: res[0].latitude,
-          markers: [{
-            iconPath: "/images/location.png",
-            id: 0,
-            latitude: res[0].latitude,
-            longitude: res[0].longitude,
-            width: 30,
-            height: 30
-          }],
-        })
-        var jl = that.distance(118.908467,32.096461, res[0].latitude, res[0].longitude);
-        console.log("打印计算两个点的距离:" + jl);
-        this.setData({
-          gaodeAddress: res[0].regeocodeData.formatted_address
-        })
-      }
-    })
-
   },
   onLoad: function (options) {
     var that = this;
@@ -82,6 +53,7 @@ test(){
             scope: 'scope.userLocation',
             //用户同意授权
             success() {
+
               // 用户已经同意小程序使用地理位置，后续调用 wx.getLocation 接口不会弹窗询问
             },
             //用户不同意授权
@@ -113,12 +85,43 @@ test(){
             }
           })
         } else {
-          that.gaodeGetLocation()
+          that.getLocation()
         }
       }
     })
   },
+  getLocation() {
+    var that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success(res) {
+        // 调用sdk接口
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (res) {
+            that.setData({
+              longitude: res.result.location.lng,
+              latitude: res.result.location.lat,
+              //先不设置标记点，只显示自己位置，搜索了在设置markers
+              // markers: [{
+              //   iconPath: "/images/location.png",
+              //   id: 0,
+              //   latitude: res.result.location.lat,
+              //   longitude: res.result.location.lng,
+              //   width: 30,
+              //   height: 30
+              // }],
+            })
+            console.log(res.result.location) //获取成功
+          }
+        })
+      }
+    })
+  },
   onShow() {
-    this.gaodeGetLocation()
+    this.getLocation()
   }
 })
