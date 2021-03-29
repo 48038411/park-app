@@ -9,44 +9,46 @@ Page({
     longitude: "",
     latitude: "",
     markers: [],
+    subkey: "FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX",
     gaodeAddress: ""
   },
+  //跳转到选点页面(引用的插件)
+test(){
+  const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
+  const referer = '我的地图'; //调用插件的app的名称
+  const location = JSON.stringify({
+    latitude: this.data.latitude,
+    longitude: this.data.longitude
+  });
+  const category = '生活服务,娱乐休闲';
+  
+  wx.navigateTo({
+    url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
+  });
+},
   //高德地图获取定位
   //通过两点经纬度计算距离（KM）  
-
   distance: function (la1, lo1, la2, lo2) {
     var La1 = la1 * Math.PI / 180.0;
-
     var La2 = la2 * Math.PI / 180.0;
-
     var La3 = La1 - La2;
-
     var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-
     var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-
     s = s * 6378.137; //地球半径
-
     s = Math.round(s * 10000) / 10000;
-
     console.log("计算结果", s);
-
     return s;
-
   },
+  // 通过高德地图接口获取当前经纬度，个人觉得微信接口不准
   gaodeGetLocation: function () {
     var that = this;
-
     var myAmapFun = new amapFile.AMapWX({
       key: '4ca3660bbd1986f8acc638ba8bf78e7e'
     });
-
     myAmapFun.getRegeo({
       success: (res) => {
-        console.log("高德地图获取定位:" + JSON.stringify(res), res[0].regeocodeData.formatted_address, res[0].longitude);
-
+        console.log(res)
         //计算两个经纬度距离
-
         that.setData({
           longitude: res[0].longitude,
           latitude: res[0].latitude,
@@ -59,16 +61,12 @@ Page({
             height: 30
           }],
         })
-        var jl = that.distance(32.101352, 118.945995, res[0].latitude, res[0].longitude);
-
+        var jl = that.distance(118.908467,32.096461, res[0].latitude, res[0].longitude);
         console.log("打印计算两个点的距离:" + jl);
-
         this.setData({
           gaodeAddress: res[0].regeocodeData.formatted_address
         })
-
       }
-
     })
 
   },
@@ -122,6 +120,5 @@ Page({
   },
   onShow() {
     this.gaodeGetLocation()
-
   }
 })
