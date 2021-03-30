@@ -13,7 +13,10 @@ Page({
     latitude: "",
     markers: [],
     subkey: "FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX",
-    gaodeAddress: ""
+    gaodeAddress: "",
+    polyline: [
+    ],
+    points: [{latitude: 32.09636, longitude: 118.90907}]
   },
   //跳转到选点页面(引用的插件)
   test() {

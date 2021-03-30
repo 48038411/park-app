@@ -14,6 +14,11 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    isLogin: false,
+    userInfo: null,
+    pkId: 0,
+    wxId: '',
+    code: '',
+    token: ''
   }
 })
