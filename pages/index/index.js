@@ -1,6 +1,7 @@
 // index.js
 // 获取应用实例
 // 引入SDK核心类，js文件根据自己业务，位置可自行放置
+const API = require("../../utils/request")
 var amapFile = require('../../libs/amap-wx');
 var QQMapWX = require('../../libs/qqmap-wx-jssdk');
 const app = getApp()
@@ -14,24 +15,25 @@ Page({
     markers: [],
     subkey: "FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX",
     gaodeAddress: "",
-    polyline: [
-    ],
-    points: [{latitude: 32.09636, longitude: 118.90907}]
+    polyline: []
   },
   //跳转到选点页面(引用的插件)
-  test() {
-    const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
-    const referer = '我的地图'; //调用插件的app的名称
-    const location = JSON.stringify({
-      latitude: this.data.latitude,
-      longitude: this.data.longitude
-    });
-    const category = '生活服务,娱乐休闲';
+  // test() {
+  //   const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
+  //   const referer = '我的地图'; //调用插件的app的名称
+  //   const location = JSON.stringify({
+  //     latitude: 32.085457,
+  //     longitude: 118.919305
+  //   },{
+  //     latitude: 32.08544,
+  //     longitude: 32.08544
+  //   });
+  //   const category = '生活服务,娱乐休闲';
 
-    wx.navigateTo({
-      url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
-    });
-  },
+  //   wx.navigateTo({
+  //     url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
+  //   });
+  // },
   //通过两点经纬度计算距离（KM）  
   distance: function (la1, lo1, la2, lo2) {
     var La1 = la1 * Math.PI / 180.0;
@@ -87,9 +89,7 @@ Page({
               })
             }
           })
-        } else {
-          that.getLocation()
-        }
+        } else {}
       }
     })
   },
@@ -98,6 +98,20 @@ Page({
     wx.getLocation({
       type: 'gcj02',
       success(res) {
+        that.setData({
+          longitude: res.longitude,
+          latitude: res.latitude,
+          //先不设置标记点，只显示自己位置，搜索了在设置markers
+          // markers: [{
+          //   iconPath: "/images/location.png",
+          //   id: 0,
+          //   latitude: res.result.location.lat,
+          //   longitude: res.result.location.lng,
+          //   width: 30,
+          //   height: 30
+          // }],
+        })
+        that.getList()
         // 调用sdk接口
         qqmapsdk.reverseGeocoder({
           location: {
@@ -105,21 +119,38 @@ Page({
             longitude: res.longitude
           },
           success: function (res) {
-            that.setData({
-              longitude: res.result.location.lng,
-              latitude: res.result.location.lat,
-              //先不设置标记点，只显示自己位置，搜索了在设置markers
-              // markers: [{
-              //   iconPath: "/images/location.png",
-              //   id: 0,
-              //   latitude: res.result.location.lat,
-              //   longitude: res.result.location.lng,
-              //   width: 30,
-              //   height: 30
-              // }],
-            })
-            console.log(res.result.location) //获取成功
           }
+        })
+      }
+    })
+  },
+  go(){
+    wx.navigateTo({
+      url: '/pages/gowhere/gowhere?latitude='+this.data.latitude+'&longitude='+this.data.longitude,
+    })
+  },
+  // 获取周围的点(2km内)
+  getList: function () {
+    API.aroundlist({
+      latitude: this.data.latitude,
+      longitude: this.data.longitude
+    }).then(res => {
+      var rep = JSON.parse(res)
+      if (rep.code == 0) {
+        var result = rep.data
+        var newResult = result.map((item, index) => {
+          return Object.assign(item, {
+            'iconPath': '/images/location.png'
+          }, {
+            'id': index
+          }, {
+            'width': 30
+          }, {
+            'height': 30
+          })
+        })
+        this.setData({
+          markers: newResult
         })
       }
     })

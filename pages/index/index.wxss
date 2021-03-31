@@ -3,3 +3,34 @@
   height: 100%;
   width: 100%;
 } */
+page {
+  position: relative;
+  min-width: 100%;
+}
+
+.go {
+  left: 50%;
+  transform: translateX(-50%);
+  /* 移动元素本身50% */
+  position: absolute;
+  bottom: 0;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ff5722;
+  color: #FFFFFF;
+  padding: 10rpx;
+  width: 50%;
+  border-radius: 5rpx;
+  text-align: center;
+}
+
+.notice {
+  left: 50%;
+  transform: translateX(-50%);
+  /* 移动元素本身50% */
+  position: absolute;
+  top: 0;
+}

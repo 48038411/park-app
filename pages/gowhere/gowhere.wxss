@@ -1,0 +1,87 @@
+/* pages/gowhere/gowhere.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+}
+.content{
+  margin-top: 500rpx;
+}
+.store {
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 10rpx 20rpx;
+	padding: 20rpx;
+	background-color: #ffffff;
+}
+.store-left {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+}
+.store-title {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.store-name {
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  margin-right: 50rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.store-status {
+  color: #adb838;
+  font-size: 24rpx;
+  padding: 0 5rpx;
+  border: 1rpx solid #adb838;
+  white-space: nowrap;
+}
+.store-content {
+  margin-top: 60rpx;
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+}
+.store-text {
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.store-right {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+.look {
+  font-size: 24rpx;
+  color:#adb838;
+}
+.icon {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-top: 60rpx;
+  justify-content: flex-end;
+}
+.round {
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  margin: 10rpx;
+  background-color: #cad43f;
+}
+image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 10rpx;
+  align-items: center;
+}
+.page-section{
+  z-index: 0;
+}

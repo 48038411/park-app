@@ -53,7 +53,7 @@ Page({
               API.login(data).then(res => {
                 var rep = JSON.parse(res)
                 console.log(rep.code)
-                if (rep.code == 1) {
+                if (rep.code == 0) {
                   app.globalData.pkId = rep.data.userId
                   app.globalData.wxId = rep.data.openId
                   app.globalData.token = rep.data.userToken

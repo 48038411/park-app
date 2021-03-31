@@ -1,7 +1,7 @@
 const request = require("request");
 
 //统一接口封装
-const API_BASE_URL = 'http://guorui.test.utools.club';
+const API_BASE_URL = 'http://guorc.cn1.utools.club';
 const app = getApp()
 
 const get = (url, data) => { 
@@ -74,6 +74,7 @@ const postParams = (url, data) => {
   });
 }
  const post = (url, data,contentType) => {
+   console.log(app.globalData.token)
   let _url = API_BASE_URL  + url;
   switch(contentType){
     case "form" :
@@ -104,6 +105,37 @@ const postParams = (url, data) => {
       }
     })
   });
+}
+const postnotoken = (url, data,contentType) => {
+ let _url = API_BASE_URL  + url;
+ switch(contentType){
+   case "form" :
+     var headerObj = {'content-type' : 'application/x-www-form-urlencoded'};
+   break;
+   case "json" : 
+     var headerObj = {
+       'content-type' : 'application/json'};
+       
+       
+   break;
+   default :
+     var headerObj = {'content-type' : 'application/json'};
+ }
+ return new Promise((resolve, reject) => {
+   wx.request({
+     url      : _url,
+     data     : data,
+     method   : "POST",
+     dataType : JSON,
+     header: headerObj,
+     success(request) {  
+       resolve(request.data)
+     },
+     fail(error) {
+       reject(error)
+     }
+   })
+ });
 }
 const put = (url, data,contentType) => {
   let _url = API_BASE_URL  + url;
@@ -139,5 +171,9 @@ module.exports ={
   login:(data) =>{
     console.log("登录")
     return post('/user/login',data,'json') //
+  },
+  aroundlist:(data) => {
+    console.log("查找周围点")
+    return postnotoken('/parking/list',data,'json')
   }
 }
