@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
-    "pages/gowhere/gowhere"
+    "pages/gowhere/gowhere",
+    "pages/appointment/appointment"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -19,6 +19,8 @@ App({
     pkId: 0,
     wxId: '',
     code: '',
-    token: ''
+    token: '',
+    //微信小程序接口调用凭证
+    accessToken: ''
   }
 })

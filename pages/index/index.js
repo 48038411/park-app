@@ -4,6 +4,7 @@
 const API = require("../../utils/request")
 var amapFile = require('../../libs/amap-wx');
 var QQMapWX = require('../../libs/qqmap-wx-jssdk');
+var arealist = require("../../constant/area")
 const app = getApp()
 var qqmapsdk = new QQMapWX({
   key: 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX' //申请的开发者秘钥key
@@ -156,6 +157,56 @@ Page({
     })
   },
   onShow() {
+    //车牌号简称替换英文方法
+    var test = "晋A-1122"
+    var name = test.substring(0,1)
+    var now = Date.now()
+    arealist.list.find(value => {
+      console.log(value.jc)
+      if(value.jc == name){
+        name = value.sx
+      }
+    })
+    console.log(Date.now() - now)
     this.getLocation()
+    //未发布，还不能用
+    API.getAccessToken().then(res => {
+      var rep = JSON.parse(res)
+
+      if(rep.code == 0){
+        app.globalData.accessToken = rep.data
+        var license = "晋A1221";
+        var name = license.substring(0,1)
+        arealist.list.find(value => {
+          console.log(value.jc)
+          if(value.jc == name){
+            name = value.sx
+          }
+        })
+        license = name + license.substring(1,license.length - 1)
+        var params = "id="+1+"&lic="+license
+        API.getWxCode({
+          scene: params,
+          page: "pages/appointment/appointment",
+          is_hyaline: true
+        }).then(res => {
+          console.log(res)
+        })
+      }
+    })
+    // 封装的刚抓的根据用户参数生成小程序码的方法
+    // API.getAppInfo().then(res => {
+    //   var rep = JSON.parse(res)
+    //   if(rep.code == 0){
+    //     API.generatCode({
+    //       weapp_id: rep.data.appId,
+    // weapp_secret: rep.data.appSecret,
+    // // 测试参数，晚点写用户预约成功后返回二维码
+    // weapp_url: 'pages/appointment/appointment?userId=1&license=1'
+    //     }).then(res => {
+    //       console.log(res.data)
+    //     })
+    //   }
+    // })
   }
 })
