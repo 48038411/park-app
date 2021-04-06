@@ -15,7 +15,13 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.isLogin)
+    const isLogin  = app.globalData.isLogin
     var that = this;
+    if(isLogin){
+      wx.navigateTo({
+        url: '/pages/mine/mine',
+      })
+    }
     //查看是否授权
     wx.getSetting({
       success: function (res) {
@@ -49,10 +55,8 @@ Page({
                 encryptedData: encryptedData,
                 iv: iv,
               }
-              console.log(data)
               API.login(data).then(res => {
                 var rep = JSON.parse(res)
-                console.log(rep.code)
                 if (rep.code == 0) {
                   app.globalData.pkId = rep.data.userId
                   app.globalData.wxId = rep.data.openId
@@ -65,6 +69,16 @@ Page({
                   that.setData({
                     isHide: !app.globalData.isLogin
                   })
+                  if(rep.data.isBind == 0){
+                    wx.showToast({
+                      title: '请先绑定手机号！',
+                      icon: 'none',
+                      duration: 2000
+                    })
+                    wx.navigateTo({
+                      url: '/pages/bindPhone/bindPhone',
+                    })
+                  }
                 }
               })
            

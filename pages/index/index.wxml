@@ -2,7 +2,6 @@
 <view>
   <map id="map" subkey="{{subkey}}" layer-style="1" longitude="{{longitude}}" latitude="{{latitude}}" show-compass="true" enable-traffic="true" markers="{{markers}}" polyline="{{polyline}}"
   include-points="{{points}}" show-location="true" style="position: fixed;width: 100%;height: 100%;" scale="15">
-  <cover-view class="notice" bindtap="go">注:只会检索出方圆2km以内的停车位</cover-view>
   <cover-view class="go" bindtap="go">出发</cover-view>
 </map>
 </view>

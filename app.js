@@ -20,6 +20,7 @@ App({
     wxId: '',
     code: '',
     token: '',
+    isBind: 0,
     //微信小程序接口调用凭证
     accessToken: ''
   }

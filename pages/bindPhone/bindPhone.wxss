@@ -1,0 +1,52 @@
+
+.content {
+  width: 100%;
+  height: auto;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+}
+ 
+.phone-box {
+  width: 100%;
+  height: 89rpx;
+  border-bottom: 1rpx solid #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+ 
+.phone {
+  color: #333;
+  margin-right: 60rpx;
+  font-size: 28rpx;
+}
+ 
+.number {
+  color: #333;
+  font-size: 28rpx;
+  width: 200rpx;
+}
+ 
+.getNum {
+  width:210rpx;
+  height:48rpx;
+  background:rgba(248, 112, 57, 1);
+  border-radius:8rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  color:rgba(255, 255, 255, 1);
+  line-height:48rpx;
+  margin-right:36rpx;
+  text-align:center;
+}
+ 
+.submit {
+  width: 480rpx;
+  height: 80rpx;
+  background: rgba(248, 112, 57, 1);
+  border-radius: 8rpx;
+  margin-top: 80rpx;
+  color: #fff;
+  font-size: 32rpx;
+}

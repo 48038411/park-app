@@ -1,4 +1,5 @@
 // pages/appointment/appointment.js
+const log = require('../../log')
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    log.info(options)
     const scene = decodeURIComponent(options.scene)
     console.log(scene)
   },

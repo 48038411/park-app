@@ -1,9 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/logs/logs",
     "pages/mine/mine",
     "pages/gowhere/gowhere",
-    "pages/appointment/appointment"
+    "pages/appointment/appointment",
+    "pages/bindPhone/bindPhone"
   ],
   "window": {
     "backgroundTextStyle": "light",

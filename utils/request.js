@@ -207,18 +207,22 @@ module.exports ={
     return postnotoken('/parking/list',data,'json')
   },
   getAppInfo:() => {
-    return post('/common/info',null,'json')
-  },
-  generatCode: (data) => {
-    console.log("生成二维码")
-    return postParams('https://cli.im/Home/Weapp/create',data)
+    return post('/usercommon/info',null,'json')
   },
   getAccessToken: () => {
     console.log("获取接口凭证")
-    return post('/common/getToken',null,'json')
+    return post('/usercommon/getToken',null,'json')
   },
   getWxCode: (data) => {
     console.log("生成二维码")
-    return generatCode("https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token="+app.globalData.accessToken,data,'json')
+    return post('/common/getCode',data,'json')
+  },
+  getCode: (data) => {
+    console.log("发送二维码")
+    return post('/common/sendMsg',data,'json')
+  },
+  bindPhone: (data) => {
+    console.log("绑定手机号")
+    return post('/user/bindPhone',data,'json')
   }
 }

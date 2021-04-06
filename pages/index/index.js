@@ -1,9 +1,10 @@
 // index.js
 // 获取应用实例
 // 引入SDK核心类，js文件根据自己业务，位置可自行放置
+const log = require('../../log')
 const API = require("../../utils/request")
-var amapFile = require('../../libs/amap-wx');
 var QQMapWX = require('../../libs/qqmap-wx-jssdk');
+// 拿来替换中文地区简称
 var arealist = require("../../constant/area")
 const app = getApp()
 var qqmapsdk = new QQMapWX({
@@ -137,6 +138,7 @@ Page({
       longitude: this.data.longitude
     }).then(res => {
       var rep = JSON.parse(res)
+      log.info(res)
       if (rep.code == 0) {
         var result = rep.data
         var newResult = result.map((item, index) => {
@@ -157,22 +159,10 @@ Page({
     })
   },
   onShow() {
-    //车牌号简称替换英文方法
-    var test = "晋A-1122"
-    var name = test.substring(0,1)
-    var now = Date.now()
-    arealist.list.find(value => {
-      console.log(value.jc)
-      if(value.jc == name){
-        name = value.sx
-      }
-    })
-    console.log(Date.now() - now)
     this.getLocation()
     //未发布，还不能用
     API.getAccessToken().then(res => {
       var rep = JSON.parse(res)
-
       if(rep.code == 0){
         app.globalData.accessToken = rep.data
         var license = "晋A1221";
@@ -187,8 +177,7 @@ Page({
         var params = "id="+1+"&lic="+license
         API.getWxCode({
           scene: params,
-          page: "pages/appointment/appointment",
-          is_hyaline: true
+          page: "pages/appointment/appointment"
         }).then(res => {
           console.log(res)
         })
