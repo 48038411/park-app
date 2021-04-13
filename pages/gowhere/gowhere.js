@@ -29,11 +29,20 @@ Page({
 				s = s.toFixed(1);
 				return s;
       },
+      // 导航去这里
       gothere(e){
         var parking = e.currentTarget.dataset.item
         wx.openLocation({
           latitude: parking.latitude,
           longitude: parking.longitude,
+        })
+      },
+      // 预购车位信息
+      prepay(e){
+        console.log(e)
+        var parking = e.currentTarget.dataset.item
+        wx.navigateTo({
+          url: '/pages/prepare/prepare',
         })
       },
   /**

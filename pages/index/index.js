@@ -19,23 +19,6 @@ Page({
     gaodeAddress: "",
     polyline: []
   },
-  //跳转到选点页面(引用的插件)
-  // test() {
-  //   const key = 'FSLBZ-WIXKX-UXY4I-TUO64-3MNZT-UKBEX'; //使用在腾讯位置服务申请的key
-  //   const referer = '我的地图'; //调用插件的app的名称
-  //   const location = JSON.stringify({
-  //     latitude: 32.085457,
-  //     longitude: 118.919305
-  //   },{
-  //     latitude: 32.08544,
-  //     longitude: 32.08544
-  //   });
-  //   const category = '生活服务,娱乐休闲';
-
-  //   wx.navigateTo({
-  //     url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${location}&category=${category}`
-  //   });
-  // },
   //通过两点经纬度计算距离（KM）  
   distance: function (la1, lo1, la2, lo2) {
     var La1 = la1 * Math.PI / 180.0;
@@ -103,15 +86,6 @@ Page({
         that.setData({
           longitude: res.longitude,
           latitude: res.latitude,
-          //先不设置标记点，只显示自己位置，搜索了在设置markers
-          // markers: [{
-          //   iconPath: "/images/location.png",
-          //   id: 0,
-          //   latitude: res.result.location.lat,
-          //   longitude: res.result.location.lng,
-          //   width: 30,
-          //   height: 30
-          // }],
         })
         that.getList()
         // 调用sdk接口
@@ -120,18 +94,17 @@ Page({
             latitude: res.latitude,
             longitude: res.longitude
           },
-          success: function (res) {
-          }
+          success: function (res) {}
         })
       }
     })
   },
-  go(){
+  go() {
     wx.navigateTo({
-      url: '/pages/gowhere/gowhere?latitude='+this.data.latitude+'&longitude='+this.data.longitude,
+      url: '/pages/gowhere/gowhere?latitude=' + this.data.latitude + '&longitude=' + this.data.longitude,
     })
   },
-  // 获取周围的点(2km内)
+  // 获取周围的点()
   getList: function () {
     API.aroundlist({
       latitude: this.data.latitude,
@@ -160,29 +133,29 @@ Page({
   },
   onShow() {
     this.getLocation()
-    //未发布，还不能用
-    API.getAccessToken().then(res => {
-      var rep = JSON.parse(res)
-      if(rep.code == 0){
-        app.globalData.accessToken = rep.data
-        var license = "晋A1221";
-        var name = license.substring(0,1)
-        arealist.list.find(value => {
-          console.log(value.jc)
-          if(value.jc == name){
-            name = value.sx
-          }
-        })
-        license = name + license.substring(1,license.length - 1)
-        var params = "id="+1+"&lic="+license
-        API.getWxCode({
-          scene: params,
-          page: "pages/appointment/appointment"
-        }).then(res => {
-          console.log(res)
-        })
-      }
-    })
+    // //keyiyong
+    // API.getAccessToken().then(res => {
+    //   var rep = JSON.parse(res)
+    //   if (rep.code == 0) {
+    //     app.globalData.accessToken = rep.data
+    //     var license = "晋A1221";
+    //     var name = license.substring(0, 1)
+    //     arealist.list.find(value => {
+    //       console.log(value.jc)
+    //       if (value.jc == name) {
+    //         name = value.sx
+    //       }
+    //     })
+    //     license = name + license.substring(1, license.length - 1)
+    //     var params = "id=" + 1 + "&lic=" + license
+    //     API.getWxCode({
+    //       scene: params,
+    //       page: "pages/appointment/appointment"
+    //     }).then(res => {
+    //       console.log(res)
+    //     })
+    //   }
+    // })
     // 封装的刚抓的根据用户参数生成小程序码的方法
     // API.getAppInfo().then(res => {
     //   var rep = JSON.parse(res)

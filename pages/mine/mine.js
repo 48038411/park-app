@@ -7,7 +7,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isHide: !app.globalData.isLogin
+    isHide: !app.globalData.isLogin,
+    userInfo: null,
+    orderItems: [
+      {
+        typeId: 0,
+        name: '待完成',
+        url: 'bill',
+        imageurl: '../../images/person/waitfinish.png',
+      },
+      {
+        typeId: 1,
+        name: '待付款',
+        url: 'bill',
+        imageurl: '../../images/person/waitpay.png',
+      },
+      {
+        typeId: 2,
+        name: '预约记录',
+        url: 'bill',
+        imageurl: '../../images/person/prepare.png'
+      },
+      {
+        typeId: 3,
+        name: '我的订单',
+        url: 'bill',
+        imageurl: '../../images/person/order.png'
+      }
+    ],
   },
 
   /**
@@ -78,7 +105,17 @@ Page({
                     wx.navigateTo({
                       url: '/pages/bindPhone/bindPhone',
                     })
-                  }
+                  }    
+                      API.getInfo({
+                        pkId: app.globalData.pkId
+                      }).then(res => {
+                        var rep = JSON.parse(res)
+                        if(rep.code == 0){
+                          that.setData({
+                            userInfo: rep.data
+                          })
+                        }
+                      })
                 }
               })
            

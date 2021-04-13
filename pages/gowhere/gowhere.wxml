@@ -2,24 +2,20 @@
 <view class="container">
     <map id="map" subkey="{{subkey}}" layer-style="1" longitude="{{longitude}}" latitude="{{latitude}}"
       show-compass="true" show-location="true" style="position: fixed;width: 100%; height:500rpx" scale="15"></map>
-      <view class="content">
-    <view class="store" wx:for="{{parkinglot}}">
-      <view class="store-left">
-        <view class="store-title">
-          <view class="store-name">{{item.name}}</view>
-          <view class="store-status">可停车</view>
-        </view>
-        <view class="store-content">
-          <view class="store-distance">距离您{{item.distance}}m</view>
-          <text class="store-text">{{item.address}}</text>
-        </view>
-      </view>
-      <view class="store-right"  bindtap="gothere">
-        <view class="look" data-item="{{item}}">
-          去这里
-        </view>
-        <image src="/images/logo/go.png"></image>
-      </view>
-    </view>
-  </view>
+     <view class="content">
+       <view class="store" wx:for="{{parkinglot}}">
+         <view class="go">
+           <image src="/images/go.png"></image>
+         </view>
+         <view class="store-left">
+           <view class="store-title">{{item.name}}</view>
+           <view class="address">{{item.address}}</view>
+         </view>
+         <view class="store-right">
+           <image src="/images/gothere.png"  data-item="{{item}}" bindtap="gothere"></image>
+           <view class="distance">{{item.distance}}km</view>
+           <view class="look"  data-item="{{item}}" bindtap="prepay">预订</view>
+          </view>
+       </view>
+     </view>
 </view>

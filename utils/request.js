@@ -207,11 +207,11 @@ module.exports ={
     return postnotoken('/parking/list',data,'json')
   },
   getAppInfo:() => {
-    return post('/usercommon/info',null,'json')
+    return post('/common/info',null,'json')
   },
   getAccessToken: () => {
     console.log("获取接口凭证")
-    return post('/usercommon/getToken',null,'json')
+    return post('/common/getToken',null,'json')
   },
   getWxCode: (data) => {
     console.log("生成二维码")
@@ -224,5 +224,9 @@ module.exports ={
   bindPhone: (data) => {
     console.log("绑定手机号")
     return post('/user/bindPhone',data,'json')
+  },
+  getInfo: (data) => {
+    console.log("查看个人信息")
+    return post('/user/getInfo',data,'json')
   }
 }

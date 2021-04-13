@@ -5,7 +5,8 @@
     "pages/mine/mine",
     "pages/gowhere/gowhere",
     "pages/appointment/appointment",
-    "pages/bindPhone/bindPhone"
+    "pages/bindPhone/bindPhone",
+    "pages/prepare/prepare"
   ],
   "window": {
     "backgroundTextStyle": "light",

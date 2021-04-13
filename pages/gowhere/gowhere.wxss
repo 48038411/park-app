@@ -10,7 +10,7 @@
 .store {
 	display: flex;
 	flex-wrap: nowrap;
-	margin: 10rpx 20rpx;
+	margin: 10rpx 20rpx; 
 	padding: 20rpx;
 	background-color: #ffffff;
 }
@@ -23,11 +23,19 @@
   display: flex;
   flex-wrap: nowrap;
 }
+.go{
+  justify-items: center;
+  justify-content: center;
+}
+.address{
+  font-size: smaller;
+  margin-top: 20rpx;
+}
 .store-name {
   color: black;
-  font-size: large;
-  font-weight: bold;
-  margin-right: 50rpx;
+  font-size: smaller;
+  /* font-weight: bold; */
+  /* margin-right: 50rpx; */
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -58,6 +66,7 @@
 	align-items: flex-end;
 }
 .look {
+  margin-top: 20rpx;
   font-size: 24rpx;
   color:#adb838;
 }
