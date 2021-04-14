@@ -1,37 +1,40 @@
 // pages/personal/record/record.js
+const app = getApp()
+const API = require("../../../utils/request")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    record: [
-      {"pk_id": 1,
-    "name": "郭先生",
-  "parkingName": "南京市栖霞区医院-停车场",
-"startTime": "2021-04-12 14:12:12",
-"endTime": "2021-04-12 16:12:12",
-"status": "未开始"},
-{"pk_id": 1,
-"name": "郭先生",
-"parkingName": "南京市栖霞区医院-停车场",
-"startTime": "2021-04-12 14:12:12",
-"endTime": "2021-04-12 16:12:12",
-"status": "进行中"},
-{"pk_id": 1,
-"name": "郭先生",
-"parkingName": "南京市栖霞区医院-停车场",
-"startTime": "2021-04-12 14:12:12",
-"endTime": "2021-04-12 16:12:12",
-"status": "已结束"}
-    ]
+    record: null
   },
 
+  getLogs() {
+    API.getLogs({
+      pkId: app.globalData.pkId
+    }).then(res => {
+      var rep = JSON.parse(res)
+      // 对状态重新赋值
+      rep.data.forEach(l => {
+        if(l.status == 0){
+          l.status = '未完成'
+        }if(l.status == 1){
+          l.status = '已完成'
+        }if(l.status == 2){
+          l.status = '未完成'
+        }
+      })
+      console.log(rep)
+      this.setData({
+        record: rep.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -46,6 +49,7 @@ Page({
    */
   onShow: function () {
 
+    this.getLogs()
   },
 
   /**

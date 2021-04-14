@@ -228,5 +228,9 @@ module.exports ={
   getInfo: (data) => {
     console.log("查看个人信息")
     return post('/user/getInfo',data,'json')
+  },
+  getLogs: (data) => {
+    console.log("获取预约记录")
+    return post('/order/getLogs',data,'json')
   }
 }
