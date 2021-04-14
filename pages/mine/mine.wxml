@@ -23,8 +23,8 @@
   <view class="line"></view>
 
   <view class="navs">
-    <block wx:for-items="{{orderItems}}" wx:key="name">
-      <view class="nav-item" catchtap="toOrder" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+    <block wx:for-items="{{items}}" wx:key="name">
+      <view class="nav-item" data-item="{{item}}" bindtap="toPage" data-typeid="{{item.typeId}}">
         <image src="{{item.imageurl}}" class="nav-image" />
         <text>{{item.name}}</text>
       </view>
@@ -33,10 +33,6 @@
 
   <view class="separate"></view>
   <view class="person-list">
-    <view class="list-item">
-      <image class="item-image" src="../../images/person/edit.png"></image>
-      <text class="item-text">修改头像</text>
-    </view>
     <view class="person-line"></view>
     <view class="list-item">
       <image class="item-image" src="../../images/person/cars.png"></image>

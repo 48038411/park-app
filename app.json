@@ -6,7 +6,8 @@
     "pages/gowhere/gowhere",
     "pages/appointment/appointment",
     "pages/bindPhone/bindPhone",
-    "pages/prepare/prepare"
+    "pages/prepare/prepare",
+    "pages/personal/record/record"
   ],
   "window": {
     "backgroundTextStyle": "light",

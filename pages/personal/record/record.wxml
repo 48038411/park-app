@@ -1,0 +1,16 @@
+<!--pages/personal/record/record.wxml-->
+<view class="header-swiper text-a color-f br-10 bg-pp">
+    <view class="wait-text">
+      <text>停车位:</text>
+      <text>南京市栖霞区医院-停车场</text>
+    </view>
+    <view class="wait-text">
+      <text>开始时间：</text>
+      <text>2021-02-02 12:12:12<text class="color-h"></text></text>
+    </view>
+    <view class="wait-text">
+      <text>结束时间:</text>
+      <text>2021-02-02 12:12:12<text class="color-h"></text></text>
+    </view>
+    <button class="precess-into" bindtap="gotoOrder">查看详情</button>
+  </view>

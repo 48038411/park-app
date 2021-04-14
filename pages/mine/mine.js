@@ -9,7 +9,7 @@ Page({
   data: {
     isHide: !app.globalData.isLogin,
     userInfo: null,
-    orderItems: [
+    items: [
       {
         typeId: 0,
         name: '待完成',
@@ -25,18 +25,25 @@ Page({
       {
         typeId: 2,
         name: '预约记录',
-        url: 'bill',
+        url: 'record',
         imageurl: '../../images/person/prepare.png'
       },
       {
         typeId: 3,
         name: '我的订单',
-        url: 'bill',
+        url: 'record',
         imageurl: '../../images/person/order.png'
       }
     ],
   },
 
+  toPage(e){
+    var page = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '/pages/personal/'+page.url+'/'+page.url,
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
