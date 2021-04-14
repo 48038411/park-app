@@ -1,4 +1,4 @@
-/* pages/personal/record/record.wxss */
+
 .header-swiper {
   height: 500rpx;
   width: 100%;
@@ -75,8 +75,8 @@
  width:193rpx;
 height:60rpx;
 border-radius:26rpx;
-line-height:60rpx;
-font-size:25rpx;
+line-height:30rpx;
+font-size:35rpx;
 margin-top:38rpx;
 color:#00a598;
 
