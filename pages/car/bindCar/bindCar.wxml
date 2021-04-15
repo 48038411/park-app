@@ -1,0 +1,13 @@
+<!--pages/car/addCar/addCar.wxml-->
+<view>
+ <view class="column">
+     <view class="header-list-nav row br-b row-jb"  >
+      <text>车牌号</text>
+      <input type="text" placeholder="示例:晋A11111" bindinput="carnum" />
+    </view>
+    <view class="header-list-nav row row-jc color-f bg-pp" 
+    bindtap="bindSuccess" >
+     保存
+    </view>
+  </view>
+</view>

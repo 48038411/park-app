@@ -7,7 +7,11 @@
     "pages/appointment/appointment",
     "pages/bindPhone/bindPhone",
     "pages/prepare/prepare",
-    "pages/personal/record/record"
+    "pages/personal/record/record",
+    "pages/preOrder/preOrder",
+    "pages/car/car",
+    "pages/car/bindCar/bindCar",
+    "pages/preOrder/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

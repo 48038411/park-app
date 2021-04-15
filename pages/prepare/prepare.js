@@ -1,66 +1,62 @@
-// pages/prepare/prepare.js
+// pages/detail/detail.js
+const API = require('../../utils/request')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data:{
+    imgUrls: [
+      '/images/logo/kk.png'
+    ],
+    indicatorDots: false,
+    autoplay: false,
+    interval: 5000,
+    duration: 1000,
+    parking: null,
+    charge: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad:function(options){
+    console.log(options)
+    // 页面初始化 options为页面跳转所带来的参数
+    const parking = JSON.parse(options.park)
+    this.setData({
+      parking: parking
+    })
+    this.getCharge()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getCharge() {
+    API.getCharge().then(res => {
+      console.log(res)
+      this.setData({
+        charge: res.data
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onReady:function(){
+    // 页面渲染完成
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onShow:function(){
+    // 页面显示
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onHide:function(){
+    // 页面隐藏
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  onUnload:function(){
+    // 页面关闭
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  openLocation:function(e){
+    console.log(e)
+    var parking = e.currentTarget.dataset.item
+    wx.openLocation({
+      latitude: parking.latitude,
+      longitude: parking.longitude,
+      scale: 28,
+      name: parking.name,
+      address: parking.address
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  preOrder:function(e){
+    var parking = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '../preOrder/preOrder?park='+JSON.stringify(parking)
+    })
   }
+  
 })

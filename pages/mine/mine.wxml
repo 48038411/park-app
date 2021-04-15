@@ -15,8 +15,7 @@
   <view class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatar}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickname}}</text>
-    <image src="../../images/person/account_bg.png" class="account-bg">
-    </image>
+    <view class="account-bg"></view>
   </view>
   
   <view class="separate"></view>
@@ -33,26 +32,13 @@
 
   <view class="separate"></view>
   <view class="person-list">
+   <block wx:for-items="{{itemList}}" wx:key="name" >
     <view class="person-line"></view>
     <view class="list-item">
-      <image class="item-image" src="../../images/person/cars.png"></image>
-      <text class="item-text">我的车辆</text>
+      <image class="item-image" src="{{item.imageurl}}"></image>
+      <text class="item-text" bindtap="gotoItem" data-item="{{item}}">{{item.name}}</text>
     </view>
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="../../images/person/parking.png"></image>
-      <text class="item-text">停车记录</text>
-    </view>
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="../../images/person/msg.png"></image>
-      <text class="item-text">我的消息</text>
-    </view>
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="../../images/person/exit.png"></image>
-      <text class="item-text">退出登录</text>
-    </view>
+   </block>
   </view>
   <view class="separate"></view>
 </view>

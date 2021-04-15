@@ -1,0 +1,51 @@
+<!--pages/preOrder/preOrder.wxml-->
+
+<view class="menu-list-container center">
+  <view class="menu-list-item">
+    <view class="menu-list-text">停车场</view>
+    <view class="menu-comment">{{parking.name}}</view>
+  </view>
+  <view class="menu-list-item">
+    <view class="menu-list-text">地理位置</view>
+    <view class="menu-comment">{{parking.address}}</view>
+  </view>
+</view>
+
+<view class="menu-list-container center">
+  <view class="menu-list-item">
+    <view class="menu-list-text">预留日期</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="3000-09-01" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+    <image class="menu-arrow-right" src="/images/arrowright.png"></image>
+  </view>
+  <view class="menu-list-item">
+    <view class="menu-list-text">预留时间</view>
+    <picker mode="time" value="{{time}}" start="00:00" end="23:59 " bindchange="bindTimeChange">
+    <view class="picker">
+      当前选择: {{time}}
+    </view>
+  </picker>
+    <image class="menu-arrow-right" src="/images/arrowright.png"></image>
+  </view>
+  <view class="menu-list-item">
+    <view class="menu-list-text">选择车辆</view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{carsList}}" range-key="{{'license'}}">
+    <view class="picker">
+      当前选择：{{carsList[index].license}}
+    </view>
+  </picker>
+    <image class="menu-arrow-right" src="/images/arrowright.png"></image>
+  </view>
+</view>
+
+<view class="bottom-btn-group">
+<view class="bottom-btn primary u-auto" bindtap="addPrepare">提交预约</view>
+</view>
+
+<view class="flex center" style="margin:30rpx 0;">
+  <view class="tip_text" style="color:grey;">点击预约会扣除押金</view>
+  <view class="tip_text" style="display:inline-block">50元，预约完成后返还到您的账户</view>
+</view>

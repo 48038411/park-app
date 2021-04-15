@@ -38,7 +38,8 @@ const postList = (url) => {
       url: _url,
       method: "POST",
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': app.globalData.token
       },
       success(request) {
         wx.hideLoading();
@@ -232,5 +233,21 @@ module.exports ={
   getLogs: (data) => {
     console.log("获取预约记录")
     return post('/order/getLogs',data,'json')
+  },
+  getCharge: () => {
+    console.log("查找费率规则")
+    return postList('/charge/getFee')
+  },
+  getCars: (data) => {
+    console.log("查找用户车辆")
+    return post('/cars/list',data,'json')
+  },
+  addCar: (data) => {
+    console.log("添加车辆")
+    return post('/cars/add',data,'json')
+  },
+  addPrepay: (data) => {
+    console.log("添加预订单")
+    return post('/order/prepare',data,'json')
   }
 }

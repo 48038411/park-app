@@ -68,7 +68,7 @@
 .look {
   margin-top: 20rpx;
   font-size: 24rpx;
-  color:#adb838;
+  color:rgb(255, 87, 34);
 }
 .icon {
   display: flex;

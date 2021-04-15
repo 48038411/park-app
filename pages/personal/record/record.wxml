@@ -17,7 +17,7 @@
       <text>结束时间:</text>
       <text>{{item.endTime}}<text class="color-h"></text></text>
     </view>
-    <button class="precess-into" bindtap="gotoOrder">查看详情</button>
+    <button class="precess-into" data-item="{{item}}" bindtap="gotoOrder">查看详情</button>
   </view>
 
 </view>

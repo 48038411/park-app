@@ -1,5 +1,5 @@
-// pages/appointment/appointment.js
-const log = require('../../log')
+// pages/car/car.js
+const API = require('../../utils/request')
 const app = getApp()
 Page({
 
@@ -7,24 +7,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cars: null,
   },
-
+  bindCar() {
+      wx.redirectTo({
+        url: './bindCar/bindCar'
+      })
+  },
+  getCars(){
+    API.getCars({
+      userId: app.globalData.pkId
+    }).then(res => {
+      var rep = JSON.parse(res)
+      this.setData({
+        cars: rep.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    log.info(options)
-    const scene = decodeURIComponent(options.scene)
-    console.log(scene)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getCars()
   },
 
   /**

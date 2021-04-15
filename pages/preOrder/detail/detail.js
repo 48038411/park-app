@@ -1,6 +1,4 @@
-// pages/appointment/appointment.js
-const log = require('../../log')
-const app = getApp()
+// pages/preOrder/detail/detail.js
 Page({
 
   /**
@@ -14,10 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    log.info(options)
-    const scene = decodeURIComponent(options.scene)
-    console.log(scene)
+    console.log(options.prepareId)
   },
 
   /**

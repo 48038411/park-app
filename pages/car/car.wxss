@@ -1,0 +1,110 @@
+.parking-list-container{
+  margin-bottom: 15rpx;
+}
+.parking-list-section{
+    background-color: white;
+    /*padding: 20rpx;*/
+    /*margin: 20rpx 0;*/
+    display: flex;
+    /*border-bottom: 1rpx solid gainsboro;*/
+    border-radius: 15rpx;
+    margin:10rpx 15rpx;
+}
+
+.parking-list-section:last-child{
+    
+    border-bottom: none;
+}
+
+.parking-list-item{
+    margin: 15rpx;
+}
+
+.plain-text{
+    font-size: 14px;
+    color: gray;
+}
+
+.parking-name{
+    font-size: 18px;
+    color:black;
+}
+
+.left-number{
+    display: inline-block;
+    color: green;
+    font-size: 16px;
+}
+
+.parking-distance{
+    display: inline-block;
+    font-size: 14px;
+    color: gray;
+}
+
+.content{
+    justify-content: space-between;
+    padding:10rpx;
+    flex: 1
+}
+
+.nearby-parkingLot{
+  padding: 10rpx;
+}
+page {
+  background: #fff;
+}
+
+.addCar {
+  line-height: 150rpx;
+}
+.item-box {
+  width: 700rpx;
+  margin: 0 auto;
+}
+.items {
+  width: 100%;
+}
+.item {
+  position: relative;
+  height: 220rpx;
+  line-height: 90rpx;
+
+  margin-top: 40rpx;
+}
+.item:last-child {
+  border-bottom: none;
+}
+.inner {
+  position: absolute;
+  top: 0;
+}
+.inner.txt {
+  width: 100%;
+  z-index: 5;
+  height:180rpx;
+  transition: left 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.inner.handle {
+  width: 200rpx;
+  height: 180rpx;
+  line-height: 180rpx;
+  z-index: 4;
+  right: 0;
+  color: #fff;
+}
+.edit, .del {
+  display: inline-block;
+  height: 180rpx;
+  width: 100rpx;
+}
+.edit {
+  background-color: #eee;
+}
+.del {
+  background-color: #e64340;
+}
+

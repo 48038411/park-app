@@ -35,8 +35,36 @@ Page({
         imageurl: '../../images/person/order.png'
       }
     ],
+    itemList: [      {
+      name: '我的车辆',
+      url: '/pages/car/car',
+      imageurl: '../../images/person/cars.png',
+    },
+    {
+      name: '停车记录',
+      url: 'bill',
+      imageurl: '../../images/person/parking.png',
+    },
+    {
+      name: '我的消息',
+      url: 'record',
+      imageurl: '../../images/person/msg.png'
+    },
+    {
+      typeId: 3,
+      name: '退出登录',
+      url: 'record',
+      imageurl: '../../images/person/exit.png'
+    }]
   },
 
+  gotoItem(e){
+    console.log(e)
+    var item = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: item.url,
+    })
+  },
   toPage(e){
     var page = e.currentTarget.dataset.item
     wx.navigateTo({

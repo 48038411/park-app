@@ -1,0 +1,24 @@
+
+<!--pages/car/car.wxml-->
+<view>
+<block wx:for="{{cars}}">
+  <view class="parking-list-section center">
+    <view class="content">
+      <view class="parking-list-item flex">
+        <view class="u-1of2 plain-text">车牌号:
+          <view class="parking-distance">{{item.license}}</view>
+        </view>
+      </view>
+    </view>
+    <image class="arrow-right" src="/images/arrowright.png"></image>
+  </view>
+</block>
+<view class="mg-t-80" wx:if="{{cars==''}}">
+      您目前还没有车辆，去添加吧
+    </view>
+    <view class="column car-column text-a item-box">
+      <view class="content bg-pp addCar color-f mg-t-80" bindtap="bindCar"> 
+    <text>+添加车辆</text>
+  </view>
+    </view>
+</view>
