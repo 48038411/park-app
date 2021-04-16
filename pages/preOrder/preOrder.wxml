@@ -47,5 +47,5 @@
 
 <view class="flex center" style="margin:30rpx 0;">
   <view class="tip_text" style="color:grey;">点击预约会扣除押金</view>
-  <view class="tip_text" style="display:inline-block">50元，预约完成后返还到您的账户</view>
+  <view class="tip_text" style="display:inline-block">{{prepay}}元，预约完成后返还到您的账户</view>
 </view>

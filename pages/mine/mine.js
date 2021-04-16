@@ -31,11 +31,16 @@ Page({
       {
         typeId: 3,
         name: '我的订单',
-        url: 'record',
+        url: 'order',
         imageurl: '../../images/person/order.png'
       }
     ],
-    itemList: [      {
+    itemList: [  
+      {
+        name: '我的钱包',
+        url: '/pages/wallet/wallet',
+        imageurl: '../../images/person/wallet.png',
+      },    {
       name: '我的车辆',
       url: '/pages/car/car',
       imageurl: '../../images/person/cars.png',

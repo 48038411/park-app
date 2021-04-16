@@ -8,7 +8,8 @@ Page({
     date: '2021-01-01',
     time: '12:00',
     license: '',
-    carsList: null
+    carsList: null,
+    prepay: 0
   },
   getCars(){
     API.getCars({
@@ -67,9 +68,12 @@ Page({
   },
   onLoad:function(options){
     var park = JSON.parse(options.park)
+    var charge = JSON.parse(options.charge)
+    console.log(charge)
     console.log(park)
     this.setData({
-      parking: park
+      parking: park,
+      prepay: charge.prepay
     })
     wx.setNavigationBarTitle({
       title: '车位预约',

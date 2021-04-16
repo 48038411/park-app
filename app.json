@@ -11,7 +11,8 @@
     "pages/preOrder/preOrder",
     "pages/car/car",
     "pages/car/bindCar/bindCar",
-    "pages/preOrder/detail/detail"
+    "pages/preOrder/detail/detail",
+    "pages/personal/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
