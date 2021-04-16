@@ -71,19 +71,19 @@ Page({
   },
   alreadyShow: function(){
     this.setData({
-      alreadyOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-09-30 14:00-16:00", status: "已结束", url: "../../images/bad0.png", money: "132" }, { name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-10-12 18:00-20:00", status: "未开始", url: "../../images/bad3.jpg", money: "205" }]
+      alreadyOrder: [{ name: "模拟数据", state: "交易成功", time: "2018-09-30 14:00-16:00", status: "已结束", url: "/images/mobile_02.png", money: "132" }, { name: "模拟数据", state: "交易成功", time: "2018-10-12 18:00-20:00", status: "未开始", url: "/images/mobile_02.png", money: "205" }]
     })
   },
  
   waitPayShow:function(){
     this.setData({
-      waitPayOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "待付款", time: "2018-10-14 14:00-16:00", status: "未开始", url: "../../images/bad1.jpg", money: "186" }],
+      waitPayOrder: [{ name: "模拟数据", state: "待付款", time: "2018-10-14 14:00-16:00", status: "未开始", url: "/images/rmb.png", money: "186" }],
     })
   },
  
   lostShow: function () {
     this.setData({
-      lostOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "已取消", time: "2018-10-4 10:00-12:00", status: "未开始", url: "../../images/bad1.jpg", money: "122" }],
+      lostOrder: [{ name: "模拟数据", state: "已取消", time: "2018-10-4 10:00-12:00", status: "未开始", url: "/images/mobile_02.png", money: "122" }],
     })
   },
  
