@@ -1,7 +1,7 @@
 const request = require("request");
 
 //统一接口封装
-const API_BASE_URL = 'http://121.5.167.114:8097';
+const API_BASE_URL = 'https://api.soft1841.cn';
 const app = getApp()
 
 const get = (url, data) => { 
