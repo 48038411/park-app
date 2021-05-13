@@ -14,10 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    log.info(options)
-    const scene = decodeURIComponent(options.scene)
-    console.log(scene)
+    // 解码，取id
+    const value = options.scene
+    const scene = decodeURIComponent(value)
+    const id = scene.split("=")[1]
+    console.log(id)
   },
 
   /**

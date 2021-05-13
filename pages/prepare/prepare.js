@@ -54,8 +54,14 @@ Page({
   },
   preOrder:function(e){
     var parking = e.currentTarget.dataset.item
-    wx.navigateTo({
-      url: '../preOrder/preOrder?park='+JSON.stringify(parking)+'&charge='+JSON.stringify(this.data.charge)
+    var charge = this.data.charge
+    wx.requestSubscribeMessage({
+      tmplIds: ['GfwlHFU6DfCBTBMmYbuELEvpA1Qnpl2dM3sRMFqPHcc'],
+      success (res) {
+        wx.navigateTo({
+          url: '../preOrder/preOrder?park='+JSON.stringify(parking)+'&charge='+JSON.stringify(charge)
+        })
+       }
     })
   }
   
