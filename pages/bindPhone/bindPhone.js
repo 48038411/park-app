@@ -41,27 +41,11 @@ Page({
   yanLoveInput: function (e) {
     let that = this;
     let yanLove = e.detail.value;
-    let huoLove = this.data.huoLove;
+    // let huoLove = this.data.huoLove;
     that.setData({
       yanLove: yanLove,
-      zhengLove: false,
+      zhengLove: false
     })
-    if (yanLove.length >= 6) {
-      if (yanLove == huoLove) {
-        that.setData({
-          zhengLove: true,
-        })
-      } else {
-        that.setData({
-          zhengLove: false,
-        })
-        wx.showModal({
-          content: '输入验证码有误',
-          showCancel: false,
-          success: function (res) { }
-        })
-      }
-    }
  
   },
   // 验证码按钮
@@ -130,7 +114,12 @@ Page({
       code: phoneCode,
       pkId: app.globalData.pkId
     }).then(res => {
-      console.log(res)
+      wx.showToast({
+        title: '绑定成功',
+      })
+      wx.navigateBack({
+        delta: 0,
+      })
     })
   },
 })
