@@ -99,12 +99,12 @@ Page({
     })
   },
   go() {
-    wx.navigateTo({
-      url: '/pages/preOrder/detail/detail?id=1',
-    })
     // wx.navigateTo({
-    //   url: '/pages/gowhere/gowhere?latitude=' + this.data.latitude + '&longitude=' + this.data.longitude,
+    //   url: '/pages/preOrder/detail/detail?id=1',
     // })
+    wx.navigateTo({
+      url: '/pages/gowhere/gowhere?latitude=' + this.data.latitude + '&longitude=' + this.data.longitude,
+    })
   },
   // 获取周围的点()
   getList: function () {
