@@ -43,7 +43,6 @@ Page({
             scope: 'scope.userLocation',
             //用户同意授权
             success() {
-
               // 用户已经同意小程序使用地理位置，后续调用 wx.getLocation 接口不会弹窗询问
             },
             //用户不同意授权

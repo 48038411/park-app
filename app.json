@@ -12,7 +12,9 @@
     "pages/car/car",
     "pages/car/bindCar/bindCar",
     "pages/preOrder/detail/detail",
-    "pages/personal/order/order"
+    "pages/personal/order/order",
+    "pages/personal/waitpre/waitpre",
+    "pages/personal/waitpay/waitpay"
   ],
   "window": {
     "backgroundTextStyle": "light",

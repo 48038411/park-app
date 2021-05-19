@@ -1,0 +1,17 @@
+<!--pages/personal/record/record.wxml-->
+<view>
+  <view wx:for="{{list}}" class="header-swiper text-a color-f br-10 bg-pp">
+  <view class="wait-header">
+      <text>状态：</text>
+      <text>进行中</text>
+    </view> 
+    <view class="wait-text">
+      <text>订单号:</text>
+      <text>{{item.orderNo}}</text>
+    </view>
+    <view class="wait-text">
+      <text>开始停车时间：</text>
+      <text>{{item.startTime}}<text class="color-h"></text></text>
+    </view>
+  </view>
+</view>

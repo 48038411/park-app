@@ -11,14 +11,14 @@ Page({
     userInfo: null,
     items: [{
         typeId: 0,
-        name: '待完成',
-        url: 'bill',
+        name: '进行中',
+        url: 'waitpre',
         imageurl: '../../images/person/waitfinish.png',
       },
       {
         typeId: 1,
         name: '待付款',
-        url: 'bill',
+        url: 'waitpay',
         imageurl: '../../images/person/waitpay.png',
       },
       {
