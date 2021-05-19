@@ -1,4 +1,5 @@
-
+const API = require('../../../utils/request')
+const app = getApp()
 Page({
  
   /**
@@ -70,20 +71,47 @@ Page({
     }
   },
   alreadyShow: function(){
-    this.setData({
-      alreadyOrder: [{ name: "模拟数据", state: "交易成功", time: "2018-09-30 14:00-16:00", status: "已结束", url: "/images/mobile_02.png", money: "132" }, { name: "模拟数据", state: "交易成功", time: "2018-10-12 18:00-20:00", status: "未开始", url: "/images/mobile_02.png", money: "205" }]
+    API.getUnFinish({pkId: app.globalData.pkId}).then(res => {
+      console.log(res)
+      var rep = JSON.parse(res)
+      console.log(rep.code == 0)
+      console.log(rep.data)
+      if(rep.code == 0){
+        this.setData({
+          alreadyOrder: rep.data
+        })
+      }else{
+        wx.showToast({
+          title: rep.msg,
+          icon: 'none'
+        })
+      }
     })
+
   },
  
   waitPayShow:function(){
-    this.setData({
-      waitPayOrder: [{ name: "模拟数据", state: "待付款", time: "2018-10-14 14:00-16:00", status: "未开始", url: "/images/rmb.png", money: "186" }],
+    API.getUnFinish({pkId: app.globalData.pkId}).then(res => {
+      console.log(res)
+      var rep = JSON.parse(res)
+      console.log(rep.code == 0)
+      console.log(rep.data)
+      if(rep.code == 0){
+        this.setData({
+          waitPayOrder: rep.data
+        })
+      }else{
+        wx.showToast({
+          title: rep.msg,
+          icon: 'none'
+        })
+      }
     })
   },
  
   lostShow: function () {
     this.setData({
-      lostOrder: [{ name: "模拟数据", state: "已取消", time: "2018-10-4 10:00-12:00", status: "未开始", url: "/images/mobile_02.png", money: "122" }],
+      lostOrder: [{ name: "停车场", state: "已完成", time: "2018-10-4 10:00-12:00", status: "未开始", url: "/images/mobile_02.png", money: "122" }],
     })
   },
  

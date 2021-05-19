@@ -1,20 +1,33 @@
-// pages/preOrder/detail/detail.js
+const app = getApp()
+const API = require('../../../utils/request')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    prepare: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.prepareId)
+    // 解码，取id
+    const value = options.id
+    console.log(value)
+    this.getPrepare(value)
   },
-
+  getPrepare(e){
+    var id = e; 
+    API.getPrepareLog({pkId: id}).then(res => {
+      console.log(res)
+      var rep = JSON.parse(res)
+      this.setData({
+        prepare: rep.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

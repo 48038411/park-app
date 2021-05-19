@@ -1,8 +1,8 @@
 const request = require("request");
 
 //统一接口封装
-// const API_BASE_URL = 'https://api.soft1841.cn';
-const API_BASE_URL = 'https://guorui.test.utools.club';
+const API_BASE_URL = 'https://api.soft1841.cn';
+// const API_BASE_URL = 'https://guorui.test.utools.club';
 const app = getApp()
 
 const get = (url, data) => { 
@@ -262,5 +262,9 @@ module.exports ={
   updateOrder: (data) => {
     console.log("完成订单")
     return post('/order/updateOrder',data,'json')
+  },
+  getPrepareLog: (data) => {
+    console.log("获取预约详情")
+    return post('/order/getPrepareLog',data,'json')
   }
 }

@@ -1,13 +1,14 @@
 // pages/appointment/appointment.js
 const log = require('../../log')
 const app = getApp()
+const API = require('../../utils/request')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    prepare: null
   },
 
   /**
@@ -19,8 +20,19 @@ Page({
     const scene = decodeURIComponent(value)
     const id = scene.split("=")[1]
     console.log(id)
+    this.getPrepare(id)
   },
-
+  getPrepare(e){
+    var id = e; 
+    console.log(e)
+    API.getPrepareLog({pkId: id}).then(res => {
+      console.log(res)
+      var rep = JSON.parse(rep)
+      this.setData({
+        prepare: rep.data
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

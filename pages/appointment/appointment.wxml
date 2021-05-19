@@ -1,2 +1,10 @@
 <!--pages/appointment/appointment.wxml-->
-<text>扫码查看预约页面，还在开发</text>
+<view>
+  <view>
+    用户昵称：{{prepare.name}}
+  </view>
+  <view>停车位名称：{{prepare.parkingName}}</view>
+  <view>预约开始时间：{{prepare.startTime}}</view>
+  <view>预约截止时间：{{prepare.endTime}}</view>
+  <view><image src="{{prepare.url}}"></image></view>
+</view>
